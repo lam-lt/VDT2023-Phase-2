@@ -1,65 +1,112 @@
-# 1. Zero-trust networks
+# Introduction to Identity and Access Management (IAM)
 
-## 1.1. What is the zero-trust security?
-### **What?**
-Zero Trust security is an IT security model that requires strict identity verification for every person and device trying to access resources on a private network, regardless of whether they are sitting within or outside of the **network perimeter**. This means that every access request must be authenticated and authorized before it is granted.
+## What is IAM
+Identity and Access Management (IAM) provides control over user, device validation and resource access. This technology ensures that:
+- the right people (can have access to)
+- the right resource
+- at the right time
+- for the right reasons
 
-*Fact: Traditional IT network security trusts anyone and anything inside the network, while A Zero Trust architecture trusts no-one and nothing.*
+## IAM basic concepts
+Fundamental concepts of IAM:
+- **Digital resource**:\
+    Is any combination of applications and data in a computer system. Examples of digital resources include web applications, APIs, platforms, devices, or databases.
+- **Identity**:\
+    The core of IAM is identity. Someone wants access to your resource. It could be a customer, employee, member, participant, and so on. In IAM, a user account is a `digital identity`. User accounts can also represent non-humans, such as software, Internet of Things devices, or robotics.
+- **Authentication**:\
+    Is the verification of a `digital identity`. Someone (or something) authenticates to prove that they’re the user they claim to be. 
+- **Authorization**:\
+    Is the process of determining what resources a user can access.
 
-### Why?
-![image](./images/castle-and-moat.png)
 
-Traditional IT network security is based on the castle-and-moat concept. In castle-and-moat security, it is hard to obtain access from outside the network, but everyone inside the network is trusted by default. The problem with this approach is that once an attacker gains access to the network, they have free rein over everything inside. This vulnerability in castle-and-moat security systems is exacerbated by the fact that companies no longer have their data in just one place. Today, information is often spread across cloud vendors, which makes it more difficult to have a single security control for an entire network. Hence, Zero-trust Security get involved.
 
-### Zero Trust Network Access (ZTNA)
-Zero Trust Network Access (ZTNA) is the technology that makes it possible to implement a Zero Trust security model. "Zero Trust" is an IT security model that assumes threats are present both inside and outside a network. Consequently, Zero Trust requires strict verification for every user and every device before authorizing them to access internal resources. In ZTNA, connected devices are not aware of any resources (applications, servers, etc.) on the network other than what they are connected to.
+## The difference between authentication and authorization
+It's common to confuse authentication with authorization. You can think of authentication and authorization as the security system for an office building. Users are the people who want to enter the building. Resources that people want to access are areas in the building: floors, rooms, and so on.
 
-![image](./images/ZTNA.png)
+- **Authentication**:\
+    When you enter the building, you must show your photo ID badge to the security guard. The guard compares the photo on the badge to your face. If they match, the guard lets you through the door to try to access different areas of the building. The guard doesn’t tell you what rooms you can access; they only get proof that you are who you claim to be. This is authentication: confirming user identity.
+    ![authentication](./images/authentication-building.png)
 
-***References:***\
-*[Zero Trust security - Cloudflare](https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust/)*
+- **Authorization**:\
+    In this scenario, imagine the elevators and doorways in the building have key sensors for access. The chip in your badge gives you access only to the first floor, which your company occupies. If you swipe your badge to enter any other floor, your access is denied. You can access your private office but not those belonging to your colleagues. You can enter the supply room but not the server room. This is authorization: granting and denying access to different resources based on identity.
+    ![authorization](./images/authorization-building.png)
+## What does IAM do?
+Identity and access management gives the control over user validation and resource access: 
 
-## 1.2. The zero-trust system architectures
-![image](./images/ZT-architecture.png)
-**Main principles behind Zero Trust:**
-- **Continuous monitoring and validation**\
-    The philosophy behind a Zero Trust network assumes that there are attackers both within and outside of the network, so no users or machines should be automatically trusted. Zero Trust verifies user identity and privileges as well as device identity and security. Logins and connections time out periodically once established, forcing users and devices to be continuously re-verified.
+- How users become a part of your system
 
-- **Least priviledge**\
-    Users and devices should only be granted the minimum privileges they need to perform their tasks.
+- What user information to store
 
-- **Device access control**\
-    In addition to controls on user access, Zero Trust also requires strict controls on device access. Zero Trust systems need to monitor how many different devices are trying to access their network, ensure that every device is authorized, and assess all devices to make sure they have not been compromised. This further minimizes the attack surface of the network.
+- How users can prove their identity
 
-- **Microsegmentation**\
-    Zero Trust networks also utilize microsegmentation. Microsegmentation is the practice of breaking up security perimeters into small zones to maintain separate access for separate parts of the network. For example, a network with files living in a single data center that utilizes microsegmentation may contain dozens of separate, secure zones. A person or program with access to one of those zones will not be able to access any of the other zones without separate authorization.
+- When and how often users must prove their identity
 
-- **Preventing lateral movement**\
-    In network security, "lateral movement" is when an attacker moves within a network after gaining access to that network. Lateral movement can be difficult to detect even if the attacker's entry point is discovered, because the attacker will have gone on to compromise other parts of the network.
+- The experience of proving identity
 
-    Zero Trust is designed to contain attackers so that they cannot move laterally. Because Zero Trust access is segmented and has to be re-established periodically, an attacker cannot move across to other microsegments within the network. Once the attacker's presence is detected, the compromised device or user account can be quarantined, cut off from further access. (In a castle-and-moat model, if lateral movement is possible for the attacker, quarantining the original compromised device or user has little to no effect, since the attacker will already have reached other parts of the network.)
+- Who can and cannot access different resources
+
+In real life, IAM is complex. Most systems require some combination of these capabilities:
+
+- **Seamless sign up and login experiences**\
+    Smooth and professional login and sign up experiences occur within your app, with your brand’s look and language. 
+
+- **Multiple sources of user identities**\
+    Users expect to be able to log in using a variety of social (such as Google or Linkedin), enterprise (such as Microsoft Active Directory), and other identity providers.
 
 - **Multi-factor authentication (MFA)**\
-    Multi-factor authentication (MFA) is also a core value of Zero Trust security. MFA means requiring more than one piece of evidence to authenticate a user; just entering a password is not enough to gain access. A commonly seen application of MFA is the 2-factor authorization (2FA) used on online platforms like Facebook and Google. In addition to entering a password, users who enable 2FA for these services must also enter a code sent to another device, such as a mobile phone, thus providing two pieces of evidence that they are who they claim to be.
+    In an age when passwords are often stolen, requiring additional proof of identity is the new standard. Fingerprint authentication and one-time passwords are examples of common authentication methods. To learn more, read Multi-Factor Authentication (MFA).
 
-***References:***\
-*[Zero Trust security - Cloudflare](https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust/)*
+- **Step-up authentication**\
+    Access to advanced capabilities and sensitive information require stronger proof of identity than everyday tasks and data. Step-up authentication requires additional identity verification for selected areas and features. To learn more, read Add Step-up Authentication.
 
-## 1.3. [Challenges in implementing Zero Trust](https://www.forbes.com/sites/forbestechcouncil/2023/04/11/the-top-five-challenges-of-zero-trust-security/?sh=4e7b622d4e25)
-- **Erosion Of Traditional Control Points**\
-    Zero-trust security follows a "never trust, always verify" principle, which means that every user and device must be authenticated before accessing a resource or data. This principle is dependent on a key assumption that the company controls the endpoint, network connection, or resource the user is trying to access. However, the reality is that more employees are working remotely and using SaaS services, and a company’s data and critical applications are increasingly beyond the enterprise's perimeter. The result is that in many cases, the traditional control points are no longer effective.
+- **Attack protection**\
+    Preventing bots and bad actors from breaking into your system is fundamental to cybersecurity. To learn more, read Attack Protection.
 
-- **Growth Of Business-Led IT, a.k.a. Shadow SaaS**\
-    Shadow IT has now become shadow SaaS, and it is no longer considered a negative and is often now referred to as business-led IT. No company provides their employees with every app needed, so employees go out and acquire the apps they need on their own. The challenge is that most of these apps do not go through an official purchasing process and are used outside of the governance of security. The main benefit of business-led IT is the ease and speed of accessing the app. Integrating into a zero-trust security framework would require weeks or months, which negates productivity and enterprise agility benefits.
+- **Role-based access control (RBAC)**\
+    As the number of users grows, managing the access of each individual quickly becomes impractical. With RBAC, people who have the same role have the same access to resources.
 
-- **Digital Supply Chain Vulnerability**\
-    Digital products are increasingly relying on SaaS services as key building blocks. This creates a network of systems that are connected through various networks and interfaces that can be extremely complex and requires a high level of trust. However, in a digital supply chain, it may not always be feasible to authenticate and authorize every entity involved in the supply chain due to a large number of participants and the dynamic nature of the interactions. For example, a manufacturer may have to rely on a third-party supplier for certain components, and this supplier may have its own set of suppliers and partners. Since zero trust relies on users, the risks of a digital supply chain are not covered.
+## How does IAM work?
 
-- **Integrating Security Silos**\
-    Modern cybersecurity is extremely complex, and companies are constantly adding new products to address new threats. This has created an environment where most security products operate in silos, where different teams or departments within an organization are responsible for their own security, and they may not share information or collaborate with other teams. This can create blind spots and gaps in security, as well as lead to inconsistencies in policies and procedures that create barriers to implementing zero-trust security. For the framework to be effective, it requires a holistic view of security, where all parts of the organization work together to create a unified security architecture.
+### Identity providers
+In the past, for each new application you want to use, a corresponding new account created. By the time, the services that you registered become countless. Using `Identity Providers` helps to solve the enormous numbers of account problem. Some typical identity providers are:
+- Google Account
+- LinkedIn
+- Microsoft Account
+- Facebook Account
+- ...
 
-- **Single Source Of Truth For Risk**\
-    Understanding risk is critical to zero-trust security, and not having a single source of truth for risk can be a challenge because it can lead to inconsistencies and conflicts in risk assessments across different systems and departments. Today, risk is assessed from multiple viewpoints such as endpoint, network, user, application, etc., and there is no single source of truth. This can lead to conflicting risk assessments and result in users being granted access to resources they should not have access to or be denied access to resources they should have access to.
+### Authentication factors
+Authentication factors are methods for proving a user’s identity. They commonly fall into these basic types:
+| Factor type   | Examples  |
+|     ---       |    ---    |
+| Knowledge (something you know)| Pin, Password|
+| Possession (something you have)| Mobile phone, encryption key device|
+|Inherence (something you are)| Fingerprint, facial recognition, iris scan|
 
-***References:***\
-*[The Top Five Challenges Of Zero-Trust Security - Forbes](https://www.forbes.com/sites/forbestechcouncil/2023/04/11/the-top-five-challenges-of-zero-trust-security/?sh=4e7b622d4e25)*
+IAM systems require one or many authentication factors to verify identity.
+
+### Authentication and authorization standard
+
+Authentication and authorization standards are open specifications and protocols that provide guidance on how to:
+- Design IAM systems to manage identity
+- Move personal data securely
+- Decide who can access resources
+
+These IAM industry standards are considered the most secure, reliable, and practical to implement:
+- **OAuth 2.0**\
+OAuth 2.0 is a delegation protocol for accessing APIs and is the industry-standard protocol for IAM. An open authorization protocol, OAuth 2.0 lets an app access resources hosted by other web apps on behalf of a user without ever sharing the user’s credentials. It’s the standard that allows third-party developers to rely on large social platforms like Facebook, Google, and Twitter for login. To learn more, read [OAuth 2.0 Authorization Framework](https://auth0.com/docs/authenticate/protocols/oauth).
+
+- **Open ID Connect**\
+A simple identity layer that sits on top of OAuth 2.0, OpenID Connect (OIDC) makes it easy to verify a user’s identity and obtain basic profile information from the identity provider. OIDC is another open standard protocol. To learn more, read [OpenID Connect Protocol](https://auth0.com/docs/authenticate/protocols/openid-connect-protocol).
+
+- **JSON web tokens**\
+JSON web tokens (JWTs) are an open standard that defines a compact and self-contained way for securely transmitting information between parties as a JSON object. JWTs can be verified and trusted because they’re digitally signed. They can be used to pass the identity of authenticated users between the identity provider and the service requesting the authentication. They also can be authenticated and encrypted. To learn more, read [JSON Web Tokens](https://auth0.com/docs/secure/tokens/json-web-tokens).
+
+- **Security Assertion Markup Language (SAML)**\
+Security Assertion Markup Language (SAML) is an open-standard, XML-based data format that lets businesses communicate user authentication and authorization information to partner companies and enterprise applications that their employees use. To learn more, read [SAML](https://auth0.com/docs/authenticate/protocols/saml).
+
+- **Web Services Federation (WS-Fed)**\
+Developed by Microsoft and used extensively in their applications, this standard defines the way security tokens can be transported between different entities to exchange identity and authorization information. To learn more, read [Web Services Federation Protocol](https://auth0.com/docs/authenticate/protocols/ws-fed-protocol).
+---
+References:\
+[Introduction to Identity and Access Management (IAM) - Auth0](https://auth0.com/docs/get-started/identity-fundamentals/identity-and-access-management#the-difference-between-authentication-and-authorization)
