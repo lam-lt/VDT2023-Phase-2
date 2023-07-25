@@ -1,0 +1,256 @@
+{
+    "passwordPolicy": "upperCase(1) and maxLength(30) and length(8) and lowerCase(1) and specialChars(1) and digits(1)",
+    "clients": [
+        {
+            "id": "0e43dd3f-9b49-425e-9407-40961e6c1992",
+            "clientId": "bccs",
+            "name": "",
+            "description": "",
+            "enabled": true,
+            "redirectUris": [],
+            "webOrigins": [],
+            "publicClient": true,
+            "protocol": "openid-connect",
+            "defaultClientScopes": [
+                "web-origins",
+                "acr",
+                "roles",
+                "profile",
+                "viettel-cloud",
+                "email"
+            ],
+            "optionalClientScopes": [
+                "address",
+                "phone",
+                "offline_access",
+                "microprofile-jwt"
+            ]
+        },
+        {
+            "id": "0bb5ed90-0c3a-48fd-a111-8fad996837b7",
+            "clientId": "cmp-backend",
+            "name": "",
+            "description": "",
+            "enabled": true,
+            "secret": "**********",
+            "redirectUris": ["*"],
+            "webOrigins": ["+"],
+            "serviceAccountsEnabled": true,
+            "publicClient": false,
+            "protocol": "openid-connect",
+            "defaultClientScopes": [
+                "web-origins",
+                "acr",
+                "roles",
+                "profile",
+                "viettel-cloud",
+                "email"
+            ],
+            "optionalClientScopes": [
+                "address",
+                "phone",
+                "offline_access",
+                "microprofile-jwt"
+            ]
+        },
+        {
+            "id": "0a2f94fb-cf95-455e-ba44-bb2710754a72",
+            "clientId": "cmp-ui",
+            "name": "",
+            "description": "",
+            "enabled": true,
+            "redirectUris": ["*"],
+            "webOrigins": ["+"],
+            "publicClient": true,
+            "protocol": "openid-connect",
+            "defaultClientScopes": [
+                "web-origins",
+                "acr",
+                "roles",
+                "profile",
+                "viettel-cloud",
+                "email"
+            ],
+            "optionalClientScopes": [
+                "address",
+                "phone",
+                "offline_access",
+                "microprofile-jwt"
+            ]
+        },
+        {
+            "id": "d68a75f3-13bb-4d05-a413-03345706e95a",
+            "clientId": "harbor",
+            "enabled": true,
+            "secret": "**********",
+            "redirectUris": ["*"],
+            "webOrigins": ["+"],
+            "publicClient": false,
+            "protocol": "openid-connect",
+            "defaultClientScopes": [
+                "web-origins",
+                "acr",
+                "roles",
+                "profile",
+                "viettel-cloud",
+                "email"
+            ],
+            "optionalClientScopes": [
+                "address",
+                "phone",
+                "offline_access",
+                "microprofile-jwt"
+            ]
+        },
+        {
+            "id": "95b1d3bf-656b-4837-9e79-b513ef25f75c",
+            "clientId": "vke",
+            "enabled": true,
+            "secret": "**********",
+            "redirectUris": ["*"],
+            "webOrigins": ["+"],
+            "publicClient": false,
+            "protocol": "openid-connect",
+            "defaultClientScopes": [
+                "web-origins",
+                "acr",
+                "roles",
+                "profile",
+                "scope2",
+                "email",
+                "groups"
+            ],
+            "optionalClientScopes": [
+                "address",
+                "phone",
+                "offline_access",
+                "microprofile-jwt"
+            ]
+        }
+    ],
+    "clientScopes": [
+        {
+            "id": "00b9d2c9-9d11-4e20-89a8-1806260ea680",
+            "name": "viettel-cloud",
+            "protocol": "openid-connect",
+            "attributes": {
+                "include.in.token.scope": "true",
+                "display.on.consent.screen": "true"
+            },
+            "protocolMappers": [
+                {
+                    "id": "bd038678-dcb2-44a7-9ab5-7f4317951ab9",
+                    "name": "cmp-ui-mapper",
+                    "protocol": "openid-connect",
+                    "protocolMapper": "oidc-audience-mapper",
+                    "consentRequired": false,
+                    "config": {
+                        "included.client.audience": "cmp-ui",
+                        "id.token.claim": "false",
+                        "access.token.claim": "true"
+                    }
+                },
+                {
+                    "id": "4c5bafec-b577-4c26-9d50-144e86407f03",
+                    "name": "harbor-mapper",
+                    "protocol": "openid-connect",
+                    "protocolMapper": "oidc-audience-mapper",
+                    "consentRequired": false,
+                    "config": {
+                        "included.client.audience": "harbor",
+                        "id.token.claim": "false",
+                        "access.token.claim": "true"
+                    }
+                },
+                {
+                    "id": "768b955f-66cf-49a1-a09d-20e62e9902be",
+                    "name": "cmp-backend-mapper",
+                    "protocol": "openid-connect",
+                    "protocolMapper": "oidc-audience-mapper",
+                    "consentRequired": false,
+                    "config": {
+                        "included.client.audience": "cmp-backend",
+                        "id.token.claim": "false",
+                        "access.token.claim": "true"
+                    }
+                },
+                {
+                    "id": "a7ed7f44-16a8-4dc6-91c9-8de202ba4d7a",
+                    "name": "bccs-mapper",
+                    "protocol": "openid-connect",
+                    "protocolMapper": "oidc-audience-mapper",
+                    "consentRequired": false,
+                    "config": {
+                        "included.client.audience": "bccs",
+                        "id.token.claim": "false",
+                        "access.token.claim": "true"
+                    }
+                }
+            ]
+        },
+        {
+            "id": "6fb424aa-de83-475f-9f5b-a45af8736145",
+            "name": "groups",
+            "protocol": "openid-connect",
+            "attributes": {
+                "include.in.token.scope": "true",
+                "display.on.consent.screen": "true"
+            },
+            "protocolMappers": [
+                {
+                    "id": "d1ae14ef-9050-4b65-b72e-b5d81627f383",
+                    "name": "name",
+                    "protocol": "openid-connect",
+                    "protocolMapper": "oidc-usermodel-attribute-mapper",
+                    "consentRequired": false,
+                    "config": {
+                        "userinfo.token.claim": "true",
+                        "user.attribute": "name",
+                        "id.token.claim": "true",
+                        "access.token.claim": "true",
+                        "claim.name": "name",
+                        "jsonType.label": "String"
+                    }
+                },
+                {
+                    "id": "f2dd6172-43e1-4a7a-a4af-a4540ee7f6eb",
+                    "name": "groups",
+                    "protocol": "openid-connect",
+                    "protocolMapper": "oidc-group-membership-mapper",
+                    "consentRequired": false,
+                    "config": {
+                        "full.path": "false",
+                        "id.token.claim": "true",
+                        "access.token.claim": "true",
+                        "claim.name": "groups",
+                        "userinfo.token.claim": "true"
+                    }
+                }
+            ]
+        }
+    ],
+    "smtpServer": {
+        "replyToDisplayName": "",
+        "starttls": "false",
+        "auth": "true",
+        "envelopeFrom": "",
+        "ssl": "false",
+        "password": "**********",
+        "port": "9011",
+        "host": "10.240.201.49",
+        "replyTo": "",
+        "from": "cloud@viettel.com.vn",
+        "fromDisplayName": "",
+        "user": "cloud@viettel.com.vn"
+    },
+    "loginTheme": "viettelcloud-v2",
+    "accountTheme": "viettelcloud-v2",
+    "adminTheme": "viettelcloud-v2",
+    "emailTheme": "viettelcloud-v2",
+    "internationalizationEnabled": true,
+    "supportedLocales": [
+        "vi",
+        "en"
+    ],
+    "defaultLocale": "vi"
+}
